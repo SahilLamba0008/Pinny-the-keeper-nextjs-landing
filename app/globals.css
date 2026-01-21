@@ -1,26 +1,56 @@
 @import "tailwindcss";
 
+@theme {
+	--color-background: #09090b;
+	--color-surface: #18181b;
+	--color-primary: #f97316;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+	--bg-primary: #09090b;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+	background-color: var(--bg-primary);
+	color: #f4f4f5; /* zinc-100 */
+	font-family:
+		ui-sans-serif,
+		system-ui,
+		-apple-system,
+		BlinkMacSystemFont,
+		"Segoe UI",
+		Roboto,
+		"Helvetica Neue",
+		Arial,
+		sans-serif;
+	overflow-x: hidden;
+}
+
+@layer utilities {
+	.bg-grid-pattern {
+		background-image:
+			linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+			linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+		background-size: 32px 32px;
+	}
+
+	/* The source code's gradient text style */
+	.text-gradient-hero {
+		@apply bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-emerald-500;
+	}
+
+	/* Glass/Surface Styles matching the source 'ManagePins' component */
+	.surface-card {
+		@apply bg-zinc-900/40 border border-white/5 backdrop-blur-sm;
+	}
+
+	.surface-card:hover {
+		@apply border-white/10 bg-white/[0.02];
+	}
+
+	.nav-blur {
+		background: rgba(9, 9, 11, 0.8);
+		backdrop-filter: blur(16px);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+	}
 }
