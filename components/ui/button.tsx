@@ -1,62 +1,36 @@
-import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
+import { ButtonProps } from "@/lib/types";
+import { cn } from "@/lib/utils";
 
-import { cn } from "@/lib/utils"
+export const Button = ({
+	children,
+	variant = "primary",
+	className,
+	icon,
+	...props
+}: ButtonProps) => {
+	const baseStyle =
+		"flex items-center justify-center px-6 py-3 rounded-full font-semibold transition-all duration-300 cursor-pointer relative overflow-hidden group active:scale-95";
 
-const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
-  {
-    variants: {
-      variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        destructive:
-          "bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
-        outline:
-          "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
-        secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost:
-          "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
-        link: "text-primary underline-offset-4 hover:underline",
-      },
-      size: {
-        default: "h-9 px-4 py-2 has-[>svg]:px-3",
-        sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
-        lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
-        icon: "size-9",
-        "icon-sm": "size-8",
-        "icon-lg": "size-10",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-      size: "default",
-    },
-  }
-)
+	const variants = {
+		primary:
+			"bg-gradient-to-r from-orange-600 to-red-600 text-white border border-transparent shadow-lg shadow-orange-900/20 hover:shadow-orange-600/40",
+		secondary:
+			"bg-zinc-900 text-white border border-zinc-800 hover:border-orange-500/50 hover:bg-zinc-800",
+		glass:
+			"bg-white/5 backdrop-blur-md text-white border border-white/10 hover:bg-white/10 hover:border-white/20",
+		outline:
+			"bg-transparent text-zinc-300 border border-zinc-700 hover:border-orange-500 hover:text-orange-500",
+	};
 
-function Button({
-  className,
-  variant = "default",
-  size = "default",
-  asChild = false,
-  ...props
-}: React.ComponentProps<"button"> &
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean
-  }) {
-  const Comp = asChild ? Slot : "button"
-
-  return (
-    <Comp
-      data-slot="button"
-      data-variant={variant}
-      data-size={size}
-      className={cn(buttonVariants({ variant, size, className }))}
-      {...props}
-    />
-  )
-}
-
-export { Button, buttonVariants }
+	return (
+		<button className={cn(baseStyle, variants[variant], className)} {...props}>
+			<span className="relative z-10 flex items-center gap-2">
+				{icon && <span>{icon}</span>}
+				{children}
+			</span>
+			{variant === "primary" && (
+				<div className="absolute inset-0 bg-white/25 translate-y-full blur-[4px] group-hover:translate-y-0 transition-transform duration-300 ease-out skew-y-12" />
+			)}
+		</button>
+	);
+};
