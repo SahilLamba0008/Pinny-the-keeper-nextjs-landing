@@ -33,7 +33,7 @@ const PricingSection = () => {
 						<p className="text-zinc-500 mb-8 text-sm">For casual users.</p>
 						<ul className="space-y-4 mb-10 text-zinc-400 text-sm">
 							<li className="flex items-center gap-3">
-								<CheckCircle className="text-orange-500" size={18} /> 50 Pins
+								<CheckCircle className="text-orange-500" size={18} /> 5 Pins
 								limit
 							</li>
 							<li className="flex items-center gap-3">

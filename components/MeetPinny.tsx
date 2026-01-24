@@ -78,7 +78,7 @@ const MeetPinny = () => {
 									<p>
 										With a single click, Pinny helps you pin, save, and protect
 										the messages that matter, so you can come back to them
-										anytime—instantly.
+										anytime, Instantly!
 									</p>
 									<p>
 										Built for developers, writers, founders, and learners, Pinny
@@ -91,14 +91,14 @@ const MeetPinny = () => {
 									<div className="flex flex-col">
 										<span className="text-2xl font-bold text-white">10k+</span>
 										<span className="text-xs text-zinc-500 uppercase tracking-wider">
-											Messages Saved
+											Messages Storage
 										</span>
 									</div>
 									<div className="w-px bg-white/10 mx-2"></div>
 									<div className="flex flex-col">
 										<span className="text-2xl font-bold text-white">0s</span>
 										<span className="text-xs text-zinc-500 uppercase tracking-wider">
-											Cloud Latency
+											Latency
 										</span>
 									</div>
 								</div>
