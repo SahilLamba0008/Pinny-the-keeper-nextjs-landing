@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { Button, NavLink } from "./ui";
 import { Chrome, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
 
 const Navbar = () => {
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -13,21 +15,29 @@ const Navbar = () => {
 				<div className="max-w-[1080px] mx-auto px-6">
 					<div className="flex items-center justify-between h-20">
 						{/* Logo */}
-						<div className="flex-shrink-0 flex items-center gap-2 cursor-pointer group">
-							<div className="w-8 h-8 rounded-lg flex items-center justify-center overflow-hidden transition-colors">
-								<img src="pin.png" alt="Pinny Logo" className="w-8 h-8" />
+						<Link href="/">
+							<div className="flex-shrink-0 flex items-center gap-2 cursor-pointer group">
+								<div className="w-8 h-8 rounded-lg flex items-center justify-center overflow-hidden transition-colors">
+									<Image
+										height={500}
+										width={500}
+										src="/pin.png"
+										alt="Pinny Logo"
+										className="w-8 h-8"
+									/>
+								</div>
+								<span className="text-xl uppercase font-bold text-white tracking-wide">
+									Pinny
+								</span>
 							</div>
-							<span className="text-xl uppercase font-bold text-white tracking-wide">
-								Pinny
-							</span>
-						</div>
+						</Link>
 
 						{/* Desktop Links */}
 						<div className="hidden md:flex items-center gap-8">
 							{["Features", "Dashboard", "Pricing", "FAQ"].map((item) => (
 								<NavLink
 									key={item}
-									href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
+									href={`/#${item.toLowerCase().replace(/\s+/g, "-")}`}
 								>
 									{item}
 								</NavLink>
