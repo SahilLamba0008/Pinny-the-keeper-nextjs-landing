@@ -2,7 +2,19 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Shield, Lock, Eye, Server, Mail } from "lucide-react";
+import {
+	Eye,
+	ClipboardList,
+	Database,
+	ShieldOff,
+	Globe,
+	Archive,
+	UserCog,
+	UserMinus,
+	Lock,
+	RefreshCw,
+	Mail,
+} from "lucide-react";
 import Link from "next/link";
 import { Footer, Navbar } from "@/components";
 import { Section } from "@/components/ui";
@@ -27,7 +39,7 @@ const PolicyCard = ({
 		className="bg-zinc-900/30 backdrop-blur-md border border-white/10 p-8 rounded-2xl mb-6 hover:border-orange-500/30 transition-colors"
 	>
 		<div className="flex items-center gap-4 mb-6">
-			<div className="w-12 h-12 rounded-lg bg-orange-500/10 flex items-center justify-center text-orange-500">
+			<div className="w-12 h-12 rounded-lg bg-orange-500/10 flex items-center justify-center text-orange-500 flex-shrink-0">
 				{icon}
 			</div>
 			<h3 className="text-2xl font-bold text-white">{title}</h3>
@@ -76,9 +88,9 @@ const PrivacyPage = () => {
 						transition={{ delay: 0.2 }}
 						className="text-xl text-zinc-400 leading-relaxed"
 					>
-						We believe in privacy by design. Pinny stores your data locally on
-						your device. We don&apos;t track you, and we don&apos;t sell your
-						data.
+						Pinny The Keeper (“Pinny”, “we”, “our”) is committed to privacy by
+						design. This Privacy Policy explains what data the extension
+						handles, how it is stored, and your rights regarding that data.
 					</motion.p>
 				</div>
 			</section>
@@ -86,90 +98,217 @@ const PrivacyPage = () => {
 			{/* 3. CONTENT SECTION */}
 			<Section pattern="dashed-grid">
 				<div className="max-w-4xl mx-auto">
-					<PolicyCard
-						title="Data Collection & Usage"
-						icon={<Eye size={24} />}
-						delay={1}
-					>
+					<PolicyCard title="1. Overview" icon={<Eye size={24} />} delay={1}>
 						<p>
-							<strong>PinnyTheKeeper</strong> is designed to be a local-first
-							extension. Unlike other tools that scrape your data to the cloud,
-							Pinny keeps everything on your machine.
+							Pinny is a local-first Chrome extension that allows users to
+							manually save selected ChatGPT messages.
 						</p>
-						<ul className="list-disc pl-5 space-y-2 text-zinc-400">
+						<ul className="list-disc pl-5 space-y-2 text-zinc-400 mt-4">
 							<li>
-								<span className="text-white">Pinned Messages:</span> Stored
-								locally in your browser&apos;s Chrome Storage API.
+								Pinny does <strong>not</strong> operate external servers to
+								store your chats.
 							</li>
 							<li>
-								<span className="text-white">Tags & Categories:</span> Stored
-								locally on your device.
+								Pinny does <strong>not</strong> track your browsing behavior.
 							</li>
 							<li>
-								<span className="text-white">Usage Analytics:</span> We do not
-								collect analytics or usage data of any kind.
+								Pinny does <strong>not</strong> sell or share your personal
+								data.
 							</li>
 						</ul>
 					</PolicyCard>
 
 					<PolicyCard
-						title="Where Your Data Lives"
-						icon={<Server size={24} />}
+						title="2. Information We Handle"
+						icon={<ClipboardList size={24} />}
 						delay={2}
 					>
 						<p>
-							Your data lives in your browser. Specifically, we utilize{" "}
-							<code className="bg-zinc-800 px-2 py-1 rounded text-orange-200 text-sm">
-								chrome.storage.local
-							</code>
-							.
+							Pinny only handles data that you explicitly choose to save. This
+							may include:
+						</p>
+						<ul className="list-disc pl-5 space-y-2 text-zinc-400 mb-4">
+							<li>Pinned ChatGPT messages</li>
+							<li>Tags and categories you create</li>
+							<li>Basic extension settings or preferences</li>
+						</ul>
+						<p>
+							Pinned messages may contain personal or sensitive information that
+							you entered into ChatGPT.
 						</p>
 						<p>
-							This means if you uninstall the extension, your data is removed
-							from the browser. We do not have a backup server for your private
-							chats because we do not transmit them to our servers in the first
-							place.
+							Pinny does not analyze, profile, or process this information
+							beyond storing it locally at your request.
 						</p>
 					</PolicyCard>
 
 					<PolicyCard
-						title="Third-Party Services"
-						icon={<Shield size={24} />}
+						title="3. How Data Is Stored"
+						icon={<Database size={24} />}
 						delay={3}
 					>
 						<p>
-							<strong>OpenAI / ChatGPT:</strong> Pinny interacts with the DOM of
-							chatgpt.com to allow you to pin messages. We are not affiliated
-							with OpenAI. We do not send your chat data to OpenAI via API; we
-							simply overlay a UI on top of your existing session.
+							All saved messages, tags, and preferences are stored locally in
+							your browser using:
 						</p>
-						<p>
-							<strong>Payment Processing:</strong> If you purchase the Pro plan,
-							payments are processed securely via Dodo-payments. We do not store
-							your credit card information.
-						</p>
-					</PolicyCard>
-
-					<PolicyCard title="Security" icon={<Lock size={24} />} delay={4}>
-						<p>
-							Because your data is stored locally, the security of your data is
-							tied to the security of your physical device and browser. We
-							recommend:
-						</p>
-						<ul className="list-disc pl-5 space-y-2 text-zinc-400">
-							<li>Keeping your Chrome browser updated.</li>
-							<li>Using strong passwords for your computer account.</li>
+						<div className="my-4">
+							<code className="bg-zinc-800 px-3 py-1.5 rounded-lg text-orange-200 text-sm border border-white/10 shadow-inner">
+								chrome.storage.local
+							</code>
+						</div>
+						<p>This means:</p>
+						<ul className="list-disc pl-5 space-y-2 text-zinc-400 mb-4">
 							<li>
-								Not installing suspicious extensions that might read your local
-								storage.
+								<span className="text-white">
+									Your data remains on your device
+								</span>
 							</li>
+							<li>We do not maintain server-side copies</li>
+							<li>We cannot access your saved messages</li>
+							<li>We cannot retrieve or restore your data</li>
 						</ul>
+						<p>
+							If you uninstall the extension or clear browser storage, your
+							saved data may be permanently removed.
+						</p>
 					</PolicyCard>
 
-					<PolicyCard title="Contact Us" icon={<Mail size={24} />} delay={5}>
+					<PolicyCard
+						title="4. No Background Data Collection"
+						icon={<ShieldOff size={24} />}
+						delay={4}
+					>
+						<p>Pinny does not:</p>
+						<ul className="list-disc pl-5 space-y-2 text-zinc-400 mb-4">
+							<li>Automatically collect user data</li>
+							<li>Run background analytics</li>
+							<li>Transmit saved messages to external servers</li>
+							<li>Monitor browsing activity outside user interaction</li>
+						</ul>
 						<p>
-							Have questions about your privacy? We are real developers who
-							care. Reach out directly.
+							Pinny reads visible content on chatgpt.com{" "}
+							<strong>only when you choose to pin a message</strong>.
+						</p>
+						<p>No automated scraping or background data extraction occurs.</p>
+					</PolicyCard>
+
+					<PolicyCard
+						title="5. Third-Party Services"
+						icon={<Globe size={24} />}
+						delay={5}
+					>
+						<h4 className="text-lg font-semibold text-white mt-2 mb-2">
+							ChatGPT / OpenAI
+						</h4>
+						<p>
+							Pinny interacts with visible page content on chatgpt.com to enable
+							pinning functionality. Pinny:
+						</p>
+						<ul className="list-disc pl-5 space-y-2 text-zinc-400 mb-6">
+							<li>Does not use OpenAI APIs</li>
+							<li>Does not transmit your chat history to OpenAI</li>
+							<li>Is not affiliated with OpenAI</li>
+						</ul>
+
+						<h4 className="text-lg font-semibold text-white mb-2">
+							Payment Processing (If Applicable)
+						</h4>
+						<p>
+							If you purchase Pro features, payments are processed securely by a
+							third-party payment provider. We:
+						</p>
+						<ul className="list-disc pl-5 space-y-2 text-zinc-400 mb-4">
+							<li>Do not store credit card details</li>
+							<li>Do not receive full payment card information</li>
+							<li>Only receive confirmation of successful transactions</li>
+						</ul>
+						<p className="text-sm">
+							Payment providers operate under their own privacy policies.
+						</p>
+					</PolicyCard>
+
+					<PolicyCard
+						title="6. Data Retention"
+						icon={<Archive size={24} />}
+						delay={6}
+					>
+						<p>Because all data is stored locally:</p>
+						<ul className="list-disc pl-5 space-y-2 text-zinc-400 mb-4">
+							<li>Data is retained until you delete it manually</li>
+							<li>Uninstalling the extension removes locally stored data</li>
+							<li>We do not retain server-side backups</li>
+						</ul>
+						<p>We have no ability to retain or recover deleted data.</p>
+					</PolicyCard>
+
+					<PolicyCard
+						title="7. Your Rights & Control"
+						icon={<UserCog size={24} />}
+						delay={7}
+					>
+						<p>You have full control over your saved content. You may:</p>
+						<ul className="list-disc pl-5 space-y-2 text-zinc-400 mb-4">
+							<li>View all saved messages within the extension</li>
+							<li>Delete individual messages</li>
+							<li>Delete all stored data</li>
+							<li>Uninstall the extension at any time</li>
+						</ul>
+						<p>
+							Because data is stored locally, we cannot access or modify your
+							saved content.
+						</p>
+					</PolicyCard>
+
+					<PolicyCard
+						title="8. Children’s Privacy"
+						icon={<UserMinus size={24} />}
+						delay={8}
+					>
+						<p>Pinny is not intended for children under the age of 13.</p>
+						<p>
+							We do not knowingly collect personal information from children.
+						</p>
+						<p>
+							Since data is stored locally and not transmitted to us, we do not
+							maintain user profiles or accounts.
+						</p>
+					</PolicyCard>
+
+					<PolicyCard title="9. Security" icon={<Lock size={24} />} delay={9}>
+						<p>
+							Because your data is stored locally in your browser, its security
+							depends on:
+						</p>
+						<ul className="list-disc pl-5 space-y-2 text-zinc-400 mb-4">
+							<li>Your device security</li>
+							<li>Your Chrome browser security</li>
+							<li>Other installed extensions</li>
+						</ul>
+						<p>
+							We recommend keeping your browser updated and avoiding untrusted
+							extensions.
+						</p>
+					</PolicyCard>
+
+					<PolicyCard
+						title="10. Changes to This Policy"
+						icon={<RefreshCw size={24} />}
+						delay={10}
+					>
+						<p>We may update this Privacy Policy from time to time.</p>
+						<p>
+							The updated version will reflect a revised “Last Updated” date.
+						</p>
+						<p>
+							Continued use of Pinny after changes constitutes acceptance of the
+							updated policy.
+						</p>
+					</PolicyCard>
+
+					<PolicyCard title="11. Contact" icon={<Mail size={24} />} delay={11}>
+						<p>
+							If you have questions regarding this Privacy Policy, please
+							contact:
 						</p>
 						<div className="mt-4">
 							<Link
@@ -180,10 +319,17 @@ const PrivacyPage = () => {
 							</Link>
 						</div>
 					</PolicyCard>
+
+					<div className="text-center pt-12 pb-8">
+						<p className="text-xl text-zinc-500">
+							Pinny The Keeper is built with privacy-first principles and local
+							storage by design.
+						</p>
+					</div>
 				</div>
 			</Section>
 
-			{/* 4. FOOTER (Identical to Landing) */}
+			{/* 4. FOOTER */}
 			<Footer />
 		</div>
 	);

@@ -25,8 +25,6 @@ const HeroSection = () => {
 
 				{/* Hero Top "Pill" Badge */}
 				<div className="relative z-10 flex justify-center mb-6">
-					{" "}
-					{/* Reduced margin from mb-10 */}
 					<motion.div
 						initial={{ opacity: 0, y: -20 }}
 						animate={{ opacity: 1, y: 0 }}
@@ -46,7 +44,7 @@ const HeroSection = () => {
 						initial={{ opacity: 0, y: 30 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.8, ease: "easeOut" }}
-						className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-[1.1]" // Reduced text size & margin
+						className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-[1.1]"
 					>
 						Never lose important <br className="hidden md:block" />
 						<span className="text-transparent bg-clip-text bg-linear-to-br from-orange-200 via-orange-500 to-orange-900 animate-text drop-shadow-2xl">
@@ -58,7 +56,7 @@ const HeroSection = () => {
 						initial={{ opacity: 0, y: 30 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-						className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto mb-8 leading-relaxed" // Reduced text size & margin
+						className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto mb-8 leading-relaxed"
 					>
 						Turn your raw chats into a personal knowledge base. Pin, organize,
 						and search instantly with Pinny.
@@ -67,7 +65,7 @@ const HeroSection = () => {
 						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.6, delay: 0.4 }}
-						className="flex flex-col sm:flex-row items-center justify-center gap-4" // Reduced gap
+						className="flex flex-col sm:flex-row items-center justify-center gap-4"
 					>
 						<Button
 							variant="primary"
@@ -85,26 +83,27 @@ const HeroSection = () => {
 						</Button>
 					</motion.div>
 
-					{/* Visual Product Placeholder */}
+					{/* Visual Product Video */}
 					<motion.div
 						ref={videoContainerRef}
 						style={{ y: videoY }}
-						className="mt-12 relative max-w-[1000px] mx-auto rounded-t-2xl p-3 bg-gradient-to-b from-white/10 to-transparent backdrop-blur-sm border-t border-x border-white/10 shadow-2xl" // Drastically reduced margin (mt-32 -> mt-12)
+						className="mt-12 relative max-w-[1000px] mx-auto rounded-t-2xl p-3 bg-gradient-to-b from-white/10 to-transparent backdrop-blur-sm border-t border-x border-white/10 shadow-2xl"
 					>
+						{/* Glow Behind Video */}
 						<div className="absolute -inset-4 top-10 bg-gradient-to-r from-orange-600/30 via-red-600/30 to-yellow-600/20 blur-[100px] -z-10 rounded-[3rem] opacity-60"></div>
-						<div className="relative rounded-t-xl overflow-hidden bg-zinc-950 aspect-[16/9] flex items-center justify-center border-b border-white/5">
-							<div className="absolute inset-0 bg-[url('https://via.placeholder.com/1200x675/09090b/333?text=ChatGPT+Interface')] bg-cover bg-center opacity-40"></div>
-							<div className="absolute inset-0 flex items-center justify-center">
-								<div className="text-center space-y-4">
-									<div className="w-20 h-20 bg-zinc-900 border border-white/10 rounded-2xl mx-auto flex items-center justify-center shadow-2xl shadow-orange-500/20">
-										<Bookmark className="w-10 h-10 text-orange-500 fill-orange-500/20" />
-									</div>
-									<h3 className="text-2xl font-bold text-white">
-										Pinny Dashboard
-									</h3>
-									<p className="text-zinc-500">Your AI second brain</p>
-								</div>
-							</div>
+
+						{/* Video Player Container */}
+						<div className="relative rounded-t-xl overflow-hidden bg-zinc-950 aspect-[16/9] flex items-center justify-center border-b border-white/5 shadow-inner">
+							<video
+								src="/pinnyrecroding.mp4"
+								autoPlay
+								loop
+								muted
+								playsInline
+								controls // Added this to enable play/pause and timeframe slider
+								preload="metadata" // Only loads video metadata initially to speed up page load
+								className="w-full h-full object-cover bg-zinc-900"
+							/>
 						</div>
 					</motion.div>
 				</div>

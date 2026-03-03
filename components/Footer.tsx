@@ -1,5 +1,6 @@
 import React from "react";
 import { Twitter, Youtube } from "lucide-react";
+import Link from "next/link";
 
 const Footer = () => {
 	return (
@@ -22,12 +23,12 @@ const Footer = () => {
 							</p>
 
 							<div className="flex gap-4">
-								<a
+								<Link
 									href="#"
 									className="w-10 h-10 rounded-full bg-zinc-900 border border-white/10 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-zinc-800 transition-all"
 								>
 									<Twitter size={18} />
-								</a>
+								</Link>
 								<a
 									href="#"
 									className="w-10 h-10 rounded-full bg-zinc-900 border border-white/10 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-zinc-800 transition-all"
@@ -58,41 +59,41 @@ const Footer = () => {
 						</div>
 
 						{/* Right Column: Links Grid */}
-						<div className="md:w-2/3 grid grid-cols-2 sm:grid-cols-4 gap-8">
+						<div className="md:w-fit grid grid-cols-2 sm:grid-cols-4 gap-8">
 							<div>
 								<h5 className="text-white font-semibold mb-6">Product</h5>
 								<ul className="space-y-4 text-sm text-zinc-400">
 									<li>
-										<a
-											href="#"
+										<Link
+											href="/#features"
 											className="hover:text-orange-400 transition-colors"
 										>
 											Features
-										</a>
+										</Link>
 									</li>
 									<li>
-										<a
-											href="#"
+										<Link
+											href="/#pricing"
 											className="hover:text-orange-400 transition-colors"
 										>
 											Pricing
-										</a>
+										</Link>
 									</li>
-									<li>
-										<a
+									{/* <li>
+										<Link
 											href="#"
 											className="hover:text-orange-400 transition-colors"
 										>
 											Changelog
-										</a>
-									</li>
+										</Link>
+									</li> */}
 									<li>
-										<a
+										<Link
 											href="#"
 											className="hover:text-orange-400 transition-colors"
 										>
 											Extension
-										</a>
+										</Link>
 									</li>
 								</ul>
 							</div>
@@ -101,96 +102,96 @@ const Footer = () => {
 								<h5 className="text-white font-semibold mb-6">Company</h5>
 								<ul className="space-y-4 text-sm text-zinc-400">
 									<li>
-										<a
-											href="#"
+										<Link
+											href="/about"
 											className="hover:text-orange-400 transition-colors"
 										>
 											About
-										</a>
+										</Link>
 									</li>
 									<li>
-										<a
+										<Link
 											href="#"
 											className="hover:text-orange-400 transition-colors"
 										>
 											Blog
-										</a>
+										</Link>
 									</li>
 									<li>
-										<a
-											href="#"
+										<Link
+											href="/contact"
 											className="hover:text-orange-400 transition-colors"
 										>
 											Contact
-										</a>
+										</Link>
 									</li>
 									<li>
-										<a
+										<Link
 											href="/privacy"
 											className="hover:text-orange-400 transition-colors"
 										>
 											Privacy
-										</a>
+										</Link>
 									</li>
 								</ul>
 							</div>
 
-							<div>
+							{/* <div>
 								<h5 className="text-white font-semibold mb-6">Resources</h5>
 								<ul className="space-y-4 text-sm text-zinc-400">
 									<li>
-										<a
+										<Link
 											href="#"
 											className="hover:text-orange-400 transition-colors"
 										>
 											Help Center
-										</a>
+										</Link>
 									</li>
 									<li>
-										<a
+										<Link
 											href="#"
 											className="hover:text-orange-400 transition-colors"
 										>
 											Reports
-										</a>
+										</Link>
 									</li>
 									<li>
-										<a
+										<Link
 											href="#"
 											className="hover:text-orange-400 transition-colors"
 										>
 											Status
-										</a>
+										</Link>
 									</li>
 								</ul>
-							</div>
+							</div> */}
 
 							<div>
 								<h5 className="text-white font-semibold mb-6">Support</h5>
 								<ul className="space-y-4 text-sm text-zinc-400">
 									<li>
-										<a
-											href="#"
+										<Link
+											href="/contact"
 											className="hover:text-orange-400 transition-colors"
 										>
 											Feature Request
-										</a>
+										</Link>
 									</li>
 									<li>
-										<a
+										<Link
 											href="#"
 											className="hover:text-orange-400 transition-colors"
 										>
 											Rate on Store
-										</a>
+										</Link>
 									</li>
 									<li>
-										<a
-											href="#"
+										<Link
+											href="/contact"
 											className="hover:text-orange-400 transition-colors"
 										>
 											Report Bug
-										</a>
+										</Link>
 									</li>
 								</ul>
 							</div>
